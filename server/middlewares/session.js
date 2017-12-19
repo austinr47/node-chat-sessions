@@ -1,8 +1,10 @@
-module.exports =  (req, res, next) {
-    if(!req.session.user) {
-        req.session.user = {
-            message: []
-        }
+module.exports = function( req, res, next ) {
+    const { session, method } = req;
+    if ( !session.user ) {
+      session.user = {
+        messages: []
+      };
     }
-    next()
-}
+  
+    next();
+  }
